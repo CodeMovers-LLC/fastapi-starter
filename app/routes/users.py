@@ -21,7 +21,7 @@ def authenticate_user(credentials: HTTPAuthorizationCredentials = Security(beare
 @router.get("/", response_model=List[User])
 async def get_users():
     """Fetch all users."""
-    query = "SELECT * FROM ce_users"
+    query = "SELECT * FROM users"
     try:
         rows = await database.fetch_all(query=query)
         return [User(**row) for row in rows]
